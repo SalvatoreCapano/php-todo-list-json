@@ -11,7 +11,7 @@ createApp({
         axios
             .get(this.apiUrl)
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 this.list = response.data.list;
             });
     }

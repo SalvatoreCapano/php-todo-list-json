@@ -1,0 +1,26 @@
+[
+    {
+        "task": "HTML",
+        "done": true
+    },
+    {
+        "task": "CSS",
+        "done": true
+    },
+    {
+        "task": "Responsive Design",
+        "done": true
+    },
+    {
+        "task": "PHP",
+        "done": true
+    },
+    {
+        "task": "Tanti caroselli",
+        "done": true
+    },
+    {
+        "task": "Laravel",
+        "done": false
+    }
+]

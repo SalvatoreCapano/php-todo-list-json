@@ -21,44 +21,36 @@
             <h1 class="display-1 text-secondary">TodoList</h1>
 
             <ul class="list-group mb-3">
+
                 <li class="list-group-item" v-for="item in list" :class="item.done ? 'done' : ''">
                     {{ item.task }}
                     <button type="button" class="btn btn-danger">
                         <i class="bi bi-trash-fill"></i>
                     </button>
                 </li>
-              </ul>
-
-              <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Inserisci elemento..." aria-label="Inserisci elemento..." aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary text-warning border-warning" type="button" id="button-addon2">Inserisci</button>
-              </div>
-              
-
-        </div>
-
-
-        <!-- <h1 class="mainTitle">To do List</h1>
-
-        <div class="listContainer">
-            <ul>
-
-                <li v-for="item in list">
-                    {{ item.task }}
-                </li>
 
             </ul>
-        </div>  -->
-        <!-- /listContainer-->
 
-        <!-- <div class="inputContainer">
+            <div class="formContainer">
+                <form action="" @submit.prevent="addTask()">
 
-            <input type="text" placeholder="Inserisci elemento...">
+                    <div class="input-group mb-3">
 
-        </div>  -->
-        <!-- /inputContainer-->
+                        <input type="text" class="form-control" placeholder="Inserisci elemento..."
+                            aria-label="Inserisci elemento..." aria-describedby="button-addon2" v-model="newTask">
 
-    </div>
+                        <button class="btn btn-outline-secondary text-warning border-warning" type="button"
+                            id="button-addon2" @click="addTask()">Inserisci</button>
+
+                    </div> <!-- /input-->
+
+                </form>
+            </div>
+
+
+        </div> <!-- /container-->
+
+    </div> <!-- /app-->
 
     <!-- Script -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

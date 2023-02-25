@@ -1,5 +1,6 @@
 body {
     background-color: #001632;
+    /* background-color: red; */
 }
 
 .list-group-item {
@@ -10,4 +11,8 @@ body {
 
 .list-group-item.done {
     text-decoration: line-through;
+}
+
+.list-group-item span {
+    cursor: pointer;
 }

@@ -22,9 +22,11 @@
 
             <ul class="list-group mb-3">
 
-                <li class="list-group-item" v-for="item in list" :class="item.done ? 'done' : ''">
-                    {{ item.task }}
-                    <button type="button" class="btn btn-danger">
+                <li class="list-group-item" v-for="(item, index) in list" :class="item.done ? 'done' : ''">
+                    <span @click="updateTask(index)">
+                        {{ item.task }}
+                    </span>
+                    <button type="button" class="btn btn-danger" @click="deleteTask(index)">
                         <i class="bi bi-trash-fill"></i>
                     </button>
                 </li>
@@ -32,7 +34,7 @@
             </ul>
 
             <div class="formContainer">
-                <form action="" @submit.prevent="addTask()">
+                <form action="" @submit.prevent="createTask()">
 
                     <div class="input-group mb-3">
 
@@ -40,7 +42,7 @@
                             aria-label="Inserisci elemento..." aria-describedby="button-addon2" v-model="newTask">
 
                         <button class="btn btn-outline-secondary text-warning border-warning" type="button"
-                            id="button-addon2" @click="addTask()">Inserisci</button>
+                            id="button-addon2" @click="createTask()">Inserisci</button>
 
                     </div> <!-- /input-->
 

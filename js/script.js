@@ -3,8 +3,10 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
-            readUrl: 'read.php',
             createUrl: 'create.php',
+            readUrl: 'read.php',
+            updateUrl: 'update.php',
+            deleteUrl: 'delete.php',
             list: [],
             newTask: '',
             test: null
@@ -22,17 +24,40 @@ createApp({
                     this.list = response.data.list;
                 });
         },
-        addTask() {
+        createTask() {
             console.log(this.newTask);
 
             const param = {
-                taskName: this.newTask
+                newTask: this.newTask
             }
 
             axios.post(this.createUrl, param, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             }).then((response) => {
                 this.newTask = '';
+                this.readTasks();
+            })
+        },
+        updateTask(index) {
+            const param = {
+                index: index
+            }
+
+            axios.post(this.updateUrl, param, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            }).then((response) => {
+                this.readTasks();
+            })
+        }
+        ,
+        deleteTask(index) {
+            const param = {
+                index: index
+            }
+
+            axios.post(this.deleteUrl, param, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            }).then((response) => {
                 this.readTasks();
             })
         }

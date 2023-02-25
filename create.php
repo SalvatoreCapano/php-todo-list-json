@@ -1,19 +1,20 @@
 <?php
 
-$todoDataString = file_get_contents('database.json');
-$todoDataDecoded = json_decode($todoDataString, true);
+$dataJsonString = file_get_contents('database.json');
+$dataDecoded = json_decode($dataJsonString, true);
 
-$newTodo = [
-    'task' => $_POST['taskName'],
+// Aggiunta nuovo elemento all'array
+$dataDecoded[] = [
+    'task' => $_POST['newTask'],
     'done' => false,
-];
+];;
 
-$todoDataDecoded[] = $newTodo;
+$dataEncoded = json_encode($dataDecoded);
 
-$todoDataEncoded = json_encode($todoDataDecoded);
+// Sovrascrittura nuovi dati nel file .json
+file_put_contents('database.json', $dataEncoded);
 
-file_put_contents('database.json', $todoDataEncoded);
-
+// Invio della risposta
 $response = [
     'success' => true,
     'message' => 'Ok',
@@ -23,3 +24,4 @@ $response = [
 header('Content-Type: application/json');
 
 echo json_encode($response);
+echo $dataEncoded;
